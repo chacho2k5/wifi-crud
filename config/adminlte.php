@@ -15,7 +15,7 @@ return [
     */
 
     'title' => 'AdminLTE 3',
-    'title_prefix' => '',
+    'title_prefix' => 'IDO - ',
     'title_postfix' => '',
 
     /*
@@ -30,7 +30,8 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    // 'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -85,8 +86,10 @@ return [
 
     'layout_topnav' => null,
     'layout_boxed' => null,
-    'layout_fixed_sidebar' => null,
-    'layout_fixed_navbar' => null,
+    // 'layout_fixed_sidebar' => null,
+    'layout_fixed_sidebar' => true,
+    // 'layout_fixed_navbar' => null,
+    'layout_fixed_navbar' => true,
     'layout_fixed_footer' => null,
     'layout_dark_mode' => null,
 
@@ -109,7 +112,7 @@ return [
     'classes_auth_icon' => '',
     'classes_auth_btn' => 'btn-flat btn-primary',
 
-    /*
+       /*
     |--------------------------------------------------------------------------
     | Admin Panel Classes
     |--------------------------------------------------------------------------
@@ -127,7 +130,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-info elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -145,8 +148,12 @@ return [
     |
     */
 
-    'sidebar_mini' => 'lg',
+    // 'sidebar_mini' => 'lg',
+    // Oculta totalmente el menu
+    'sidebar_mini' => 'true',
     'sidebar_collapse' => false,
+    // Con este valor en true inicia con el menu oculto
+    // 'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -188,7 +195,8 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    // 'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -237,23 +245,36 @@ return [
         ],
 
         // Sidebar items:
+        // [
+        //     'type' => 'sidebar-menu-search',
+        //     'text' => 'search',
+        // ],
+        // Esta opcion solo la muestra si la persona tiene los permisos 'manage-blog'
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
         [
-            'type' => 'sidebar-menu-search',
-            'text' => 'search',
+            'text' => 'Inicio',
+            'route'  => 'home',
+            'icon' => 'fas fa-fw fa-home'
         ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
+        // Con topnav=true agrega en el navar
+        // [
+        //     'text' => 'Link 1',
+        //     'url'  => '#',
+        //     'topnav' => true,
+        // ],
+        // [
+        //     'text'        => 'pages',
+        //     'url'         => 'admin/pages',
+        //     'icon'        => 'far fa-fw fa-file',
+        //     'label'       => 4,
+        //     'label_color' => 'success',
+        // ],
+        // ['header' => 'account_settings'],
+        ['header' => 'TABLAS'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -302,7 +323,7 @@ return [
                 ],
             ],
         ],
-        ['header' => 'labels'],
+        ['header' => 'REPORTES'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
