@@ -46,12 +46,14 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo' => '<b>WIFI </b></b>Aulas',
+    // 'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => 'vendor/adminlte/dist/img/getcatalogimage.jpeg',
+    //'logo_img' => 'vendor/adminlte/dist/img/Saint logo W.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'Instituto Don Orione',
 
     /*
     |--------------------------------------------------------------------------
@@ -68,6 +70,7 @@ return [
     'usermenu_enabled' => true,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
+    // 'usermenu_header_class' => 'bg-info',
     'usermenu_image' => false,
     'usermenu_desc' => false,
     'usermenu_profile_url' => false,
@@ -130,7 +133,11 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-info elevation-4',
+    // Color Botones sidebar
+    // 'classes_sidebar' => 'sidebar-dark-gray elevation-4',
+    'classes_sidebar' => 'sidebar-dark-secondary elevation-4',
+    // 'classes_sidebar' => 'sidebar-dark-olive elevation-4',
+    // 'classes_sidebar' => 'sidebar-dark-Lightblue elevation-4',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-white navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
@@ -274,56 +281,60 @@ return [
         //     'label_color' => 'success',
         // ],
         // ['header' => 'account_settings'],
-        ['header' => 'TABLAS'],
+        // ['header' => 'TABLAS'],
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-user',
+        // ],
+        // [
+        //     'text' => 'change_password',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
-        [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
+            'text'    => 'TABLAS',
+            //'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-database',
+            //'icon_color' => 'primary',
+            //'icon'    => 'far fa-file',
             'submenu' => [
                 [
-                    'text' => 'level_one',
+                    'text' => 'Aulas',
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'level_one',
+                    'text'    => 'Docentes',
                     'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
                 ],
                 [
-                    'text' => 'level_one',
+                    'text' => 'Módulos',
                     'url'  => '#',
                 ],
             ],
         ],
-        ['header' => 'REPORTES'],
+        [
+            'text'    => 'REPORTES',
+            //'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-print',
+            //'icon_color' => 'primary',
+            //'icon'    => 'far fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Aulas',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Docentes',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'Módulos',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        ['header' => 'ADMINISTRACION'],
         [
             'text'       => 'important',
             'icon_color' => 'red',
@@ -426,8 +437,9 @@ return [
             'files' => [
                 [
                     'type' => 'js',
-                    'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'asset' => true,
+                    // 'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => 'vendor/sweetalert2/sweetalert2.all.min.js',
                 ],
             ],
         ],
