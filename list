@@ -1,0 +1,23 @@
+
+   ErrorException 
+
+  Array to string conversion
+
+  at vendor/laravel/framework/src/Illuminate/Routing/ResourceRegistrar.php:416
+    412▕     protected function getResourceAction($resource, $controller, $method, $options)
+    413▕     {
+    414▕         $name = $this->getResourceRouteName($resource, $method, $options);
+    415▕ 
+  ➜ 416▕         $action = ['as' => $name, 'uses' => $controller.'@'.$method];
+    417▕ 
+    418▕         if (isset($options['middleware'])) {
+    419▕             $action['middleware'] = $options['middleware'];
+    420▕         }
+
+      [2m+6 vendor frames [22m
+  7   routes/web.php:28
+      Illuminate\Support\Facades\Facade::__callStatic("resource")
+
+      [2m+4 vendor frames [22m
+  12  app/Providers/RouteServiceProvider.php:38
+      Illuminate\Routing\RouteRegistrar::group("/mnt/Personal/www/cursos/Laravel/wifi-crud/routes/web.php")
