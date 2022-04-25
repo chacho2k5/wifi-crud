@@ -14,7 +14,7 @@ class NivelController extends Controller
      */
     public function index()
     {
-        //
+        return view('nivel.index');
     }
 
     /**

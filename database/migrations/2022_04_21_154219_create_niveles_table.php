@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('niveles', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion',50);
+            $table->string('turno',50);
+            $table->unsignedTinyInteger('alumnos');
             $table->timestamps();
         });
     }

@@ -25,4 +25,8 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
     })->name('dashboard');
 });
 
+// Route::get('/dashboard', function () {
+//         return view('dashboard')->name('dashboard');
+// });
+
 Route::resource('niveles',NivelController::class);
