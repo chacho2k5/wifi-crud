@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\NivelController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,4 +30,6 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
 //         return view('dashboard')->name('dashboard');
 // });
 
-Route::resource('niveles',NivelController::class);
+// Route::resource('niveles',NivelController::class);
+
+Route::resource('articulos',ArticuloController::class);
