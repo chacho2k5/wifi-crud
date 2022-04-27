@@ -1,15 +1,16 @@
-@extends('layouts.plantillabase')
+@extends('adminlte::page')
 
-@section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-@endsection
+@section('title', 'CRUD - Laravel 9')
 
-@section('contenido')
+@section('content_header')
+    <h2>Listado de Articulos</h2>
+@stop
+
+@section('content')
     <a href="articulos/create" class="btn btn-primary mb-3">CREAR</a>
-
     {{-- <table id="dt" class="table table-dark table-striped mt-4"> --}}
     <table id="dt" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
-        <thead class="bg-primary text-white">
+        <thead class="bg-info text-white">
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Código</th>
@@ -39,18 +40,23 @@
             @endforeach
         </tbody>
     </table>
+@stop
 
-    @section('js')
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+@stop
 
-        <script>
-            $(document).ready(function() {
-                $('#dt').DataTable({
-                    "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
-                });
-            } );
-        </script>
-    @endsection
-@endsection
+@section('js')
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#dt').DataTable({
+                "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
+            });
+        } );
+    </script>
+@stop

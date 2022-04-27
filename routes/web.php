@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\NivelController;
+use App\Http\Controllers\ReservaController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,4 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
 // Route::resource('niveles',NivelController::class);
 
 Route::resource('articulos',ArticuloController::class);
+Route::resource('reservas',ReservaController::class);

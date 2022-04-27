@@ -115,6 +115,9 @@ return [
     // 'classes_auth_icon' => '',
     // 'classes_auth_btn' => 'btn-flat btn-primary',
 
+    // Dark Theme #chacho
+    // Dark Login
+    // A dark background with light buttons and icons.
     'classes_auth_card' => 'bg-gradient-dark',
     'classes_auth_header' => '',
     'classes_auth_body' => 'bg-gradient-dark',

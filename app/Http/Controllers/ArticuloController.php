@@ -9,7 +9,8 @@ class ArticuloController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth');
+      //# Ver si esto se puede realizar de forma mas global o sea para toda la aplicacion
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
