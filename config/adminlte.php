@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'usermenu_enabled' => true,
+    'usermenu_enabled' => false,
     'usermenu_header' => false,
     'usermenu_header_class' => 'bg-primary',
     // 'usermenu_header_class' => 'bg-info',
@@ -249,11 +249,12 @@ return [
     */
 
     'menu' => [
+        // Se saca el search del navtop
         // Navbar items:
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
-            'topnav_right' => true,
+            'topnav_right' => false,
         ],
         [
             'type'         => 'fullscreen-widget',
@@ -272,10 +273,72 @@ return [
         //     'can'  => 'manage-blog',
         // ],
         [
-            'text' => 'Inicio',
+            'text' => 'Reservas',
             'route'  => 'home',
             'icon' => 'fas fa-fw fa-home'
         ],
+        [
+            'text'    => 'REPORTES',
+            //'icon'    => 'fas fa-fw fa-share',
+            'icon'    => 'fas fa-print',
+            //'icon_color' => 'primary',
+            //'icon'    => 'far fa-file',
+            'submenu' => [
+                [
+                    'text' => 'Aulas',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Docentes',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'Módulos',
+                    'url'  => '#',
+                ],
+            ],
+        ],
+        ['header' => 'ADMINISTRACION',
+         'classes'  => "text-uppercas text-left text-bold text-muted",
+         'icon'    => 'fas fa-tools',
+        ],
+        [
+            'text'    => 'TABLAS',
+            'icon'    => 'fas fa-database',
+            //'icon_color' => 'primary',
+            'label' => 'CRUD',
+            'label_color'   => 'info',
+            'submenu' => [
+                [
+                    'text' => 'Cursos',
+                    'url'  => '#',
+                ],
+                [
+                    'text'    => 'Docentes',
+                    'url'     => '#',
+                ],
+                [
+                    'text' => 'Niveles',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Módulos',
+                    'url'  => '#',
+                ],
+                [
+                    'text' => 'Articulos',
+                    'url'  => 'articulos',
+                ],
+            ],
+        ],
+        [
+            'text'       => 'Perfil usuario',
+            'icon'       => 'fas fa-user',
+            // 'icon_color' => 'red',
+            'url'        => 'user/profile',
+        ],
+
+
         // Con topnav=true agrega en el navar
         // [
         //     'text' => 'Link 1',
@@ -301,48 +364,6 @@ return [
         //     'url'  => 'admin/settings',
         //     'icon' => 'fas fa-fw fa-lock',
         // ],
-        [
-            'text'    => 'TABLAS',
-            //'icon'    => 'fas fa-fw fa-share',
-            'icon'    => 'fas fa-database',
-            //'icon_color' => 'primary',
-            //'icon'    => 'far fa-file',
-            'submenu' => [
-                [
-                    'text' => 'Aulas',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Docentes',
-                    'url'     => '#',
-                ],
-                [
-                    'text' => 'Módulos',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        [
-            'text'    => 'REPORTES',
-            //'icon'    => 'fas fa-fw fa-share',
-            'icon'    => 'fas fa-print',
-            //'icon_color' => 'primary',
-            //'icon'    => 'far fa-file',
-            'submenu' => [
-                [
-                    'text' => 'Aulas',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Docentes',
-                    'url'     => '#',
-                ],
-                [
-                    'text' => 'Módulos',
-                    'url'  => '#',
-                ],
-            ],
-        ],
         ['header' => 'ADMINISTRACION'],
         [
             'text'       => 'important',
