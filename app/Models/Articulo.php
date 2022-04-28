@@ -9,6 +9,8 @@ class Articulo extends Model
 {
     use HasFactory;
 
+    // protected $fillable = [];
+
     // protected $table = 'my_flights';
     // protected $primaryKey = 'flight_id';
     // public $incrementing = false;    -> para cuando primarykey no se autoincrementa

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ArticuloController extends Controller
 {
@@ -19,8 +20,19 @@ class ArticuloController extends Controller
      */
     public function index()
     {
-        $articulos = Articulo::all();
-        return view('articulo.index')->with('articulos',$articulos);
+        // $articulos = Articulo::all();
+        // $articulos = DB::table('articulos')->orderBy('descripcion','desc')->get();
+
+        $articulos = DB::table('articulos')
+            ->select('id', 'codigo', 'descripcion', 'cantidad', 'precio')
+            ->orderBy('descripcion', 'desc')
+            ->get();
+
+        return datatables()->of($articulos)->toJson();
+
+        // return datatables()->query(DB::table('users'))->toJson();
+
+        // return view('articulo.index')->with('articulos',$articulos);
     }
 
     /**

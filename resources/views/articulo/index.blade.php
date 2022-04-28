@@ -21,7 +21,8 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($articulos as $articulo)
+            {{-- Esto lo eliminamos xq ahora los datos de obtienen via ajax --}}
+            {{-- @foreach ($articulos as $articulo)
                 <tr>
                     <td>{{ $articulo->id }}</td>
                     <td>{{ $articulo->codigo }}</td>
@@ -37,37 +38,75 @@
                     </form>
                     </td>
                 </tr>
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css"> --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/r-2.2.9/datatables.min.css"/>
 @stop
 
 @section('js')
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    {{-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script> --}}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/r-2.2.9/datatables.min.js"></script>
 
     <script>
         $(document).ready(function() {
             $('#dt').DataTable({
+                processing: true,
                 responsive: true,
-                autoWidth: false,
-                "language": {
-                    "lengthMenu": "Mostrar _MENU_ filas por página",
-                    "zeroRecords": "No se encontro información",
-                    "info": "Mostrando página _PAGE_ de _PAGES_",
-                    "infoEmpty": "No hay filas disponibles",
-                    "infoFiltered": "(filtered from _MAX_ total records)"
-                },
-                "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
+                // autoWidth: false,
+                serverSide: true,
+                dataType: json,
+                // type: POST,
+                ajax: "{{ route('articulos.index') }}",
+                columns: [
+                    {data: 'id'},
+                    {data: 'codigo'},
+                    {data: 'descripcion'},
+                    {data: 'cantidad'},
+                    {data: 'precio'},
+                // {
+                //     data: 'id',
+                //     name: 'id'
+                // },
+                // {
+                //     data: 'codigo',
+                //     name: 'codigo'
+                // },
+                // {
+                //     data: 'descripcion',
+                //     name: 'descripcion'
+                // },
+                // {
+                //     data: 'cantidad',
+                //     name: 'cantidad'
+                // },
+                // {
+                //     data: 'precio',
+                //     name: 'precio',
+                //     searchable: false,
+                //     orderable: false
+                // },
+            ]
+                // "language": {
+                //     "lengthMenu": "Mostrar _MENU_ filas por página",
+                //     "zeroRecords": "No se encontro información",
+                //     "info": "Mostrando página _PAGE_ de _PAGES_",
+                //     "infoEmpty": "No hay filas disponibles",
+                //     "infoFiltered": "(filtered from _MAX_ total records)"
+                // },
+                // "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
             });
         } );
     </script>
