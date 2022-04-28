@@ -36,4 +36,5 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
 // Route::resource('niveles',NivelController::class);
 
 Route::resource('articulos',ArticuloController::class);
+Route
 Route::resource('reservas',ReservaController::class);
