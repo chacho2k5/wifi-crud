@@ -20,7 +20,7 @@
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody></tbody>
             {{-- Esto lo eliminamos xq ahora los datos de obtienen via ajax --}}
             {{-- @foreach ($articulos as $articulo)
                 <tr>
@@ -39,7 +39,6 @@
                     </td>
                 </tr>
             @endforeach --}}
-        </tbody>
     </table>
 @stop
 
@@ -61,43 +60,81 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/r-2.2.9/datatables.min.js"></script>
 
     <script>
+        // Este function capaz q ni hace falta #chacho
+        $(function() {
+            // Setting defaults
+            $.extend( $.fn.dataTable.defaults, {
+                searching: true,
+                ordering:  true,
+                // "language": {
+                //    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+                // }
+                "language": {
+                    "info": "_TOTAL_ registros",
+                    "search": "Buscar",
+                    "paginate": {
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "lengthMenu": 'Mostrar <select>'+
+                        '<option value="10">10</option>'+
+                        '<option value="30">30</option>'+
+                        '<option value="-1">Todos</option>'+
+                        '</select> registros',
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "emptyTable": "No hay datos",
+                    "zeroRecords": "No hay conincidencias",
+                    "infoEmpty": "",
+                    "infoFiltered": ""
+                }
+
+            } );
+        });
+
         $(document).ready(function() {
             $('#dt').DataTable({
-                processing: true,
-                responsive: true,
-                // autoWidth: false,
-                serverSide: true,
-                dataType: json,
+                "processing": true,
+                "responsive": true,
+                "autoWidth": false,
+                "serverSide": true,
+                // "dataType": json,
                 // type: POST,
-                ajax: "{{ route('articulos.index') }}",
-                columns: [
-                    {data: 'id'},
-                    {data: 'codigo'},
-                    {data: 'descripcion'},
-                    {data: 'cantidad'},
-                    {data: 'precio'},
-                // {
-                //     data: 'id',
-                //     name: 'id'
-                // },
-                // {
-                //     data: 'codigo',
-                //     name: 'codigo'
-                // },
-                // {
-                //     data: 'descripcion',
-                //     name: 'descripcion'
-                // },
-                // {
-                //     data: 'cantidad',
-                //     name: 'cantidad'
-                // },
-                // {
-                //     data: 'precio',
-                //     name: 'precio',
-                //     searchable: false,
-                //     orderable: false
-                // },
+                "ajax": "{{ route('dt.articulos') }}",
+                "columns": [
+                //     {data: 'id'},
+                //     {data: 'codigo'},
+                //     {data: 'descripcion'},
+                //     {data: 'cantidad'},
+                //     {data: 'precio'},
+                {
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'codigo',
+                    name: 'codigo'
+                },
+                {
+                    data: 'descripcion',
+                    name: 'descripcion'
+                },
+                {
+                    data: 'cantidad',
+                    name: 'cantidad'
+                },
+                {
+                    data: 'precio',
+                    name: 'precio',
+                    searchable: false,
+                    orderable: false
+                },
+                {
+                    data: 'actions',
+                    name: 'actions',
+                    searchable: false,
+                    orderable: false
+                },
             ]
                 // "language": {
                 //     "lengthMenu": "Mostrar _MENU_ filas por página",

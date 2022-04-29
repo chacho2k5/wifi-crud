@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\NivelController;
 use App\Http\Controllers\ReservaController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use JeroenNoten\LaravelAdminLte\View\Components\Tool\Datatable;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,5 +38,9 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
 // Route::resource('niveles',NivelController::class);
 
 Route::resource('articulos',ArticuloController::class);
-Route
+
+Route::get('dt/articulos',[DatatableController::class,'articulos'])->name('dt.articulos');
+
 Route::resource('reservas',ReservaController::class);
+
+
