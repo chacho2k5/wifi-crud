@@ -38,7 +38,7 @@
             {{-- <table id="dt" class="table table-striped" style="width:100%"> --}}
                 <table id="dt" class="table table-striped">
                 {{-- <table id="dt" class="table table-dark table-hover"> --}}
-                <thead>
+                <thead class="bg-primary text-black">
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Código</th>
