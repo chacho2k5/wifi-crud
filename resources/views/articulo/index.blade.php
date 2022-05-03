@@ -227,5 +227,74 @@
             });
             // $("div.toolbar").html('<b>Custom tool bar! Text/images etc.</b>');
         } );
+
+        function borrar_registro(e) {
+            e.preventDefault();
+            // alert('No borramo nada');
+            Swal.fire('Any fool can use a computer');
+        //     Swal.fire({
+        //       title: `Are you sure you want to delete this record?`,
+        //       text: "If you delete this, it will be gone forever.",
+        //       icon: "warning",
+        //       buttons: true,
+        //       dangerMode: true,
+        //   })
+        //   .then((willDelete) => {
+        //     if (willDelete) {
+        //       form.submit();
+        //     }
+        //   });
+        }
+
+        $('.xborrar_registro').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          e.preventDefault();
+          swal('Any fool can use a computer');
+      });
+
+    // Opcion 1 para confirmar eliminacion de registros
+    //     function deleteConfirmation(id) {
+    //     swal.fire({
+    //         title: "Delete?",
+    //         icon: 'question',
+    //         text: "Please ensure and then confirm!",
+    //         type: "warning",
+    //         showCancelButton: !0,
+    //         confirmButtonText: "Yes, delete it!",
+    //         cancelButtonText: "No, cancel!",
+    //         reverseButtons: !0
+    //     }).then(function (e) {
+
+    //         if (e.value === true) {
+    //             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    //             $.ajax({
+    //                 type: 'DELETE',
+    //                 url: "{{url('/articulos')}}/" + id,
+    //                 data: {_token: CSRF_TOKEN},
+    //                 dataType: 'JSON',
+    //                 success: function (results) {
+    //                     if (results.success === true) {
+    //                         swal.fire("Done!", results.message, "success");
+    //                         // refresh page after 2 seconds
+    //                         setTimeout(function(){
+    //                             location.reload();
+    //                         },2000);
+    //                     } else {
+    //                         swal.fire("Error!", results.message, "error");
+    //                     }
+    //                 }
+    //             });
+
+    //         } else {
+    //             e.dismiss;
+    //         }
+
+    //     }, function (dismiss) {
+    //         return false;
+    //     })
+    // }
+
     </script>
 @stop

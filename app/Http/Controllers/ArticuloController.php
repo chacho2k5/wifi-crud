@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulo;
 use Illuminate\Http\Request;
-
+use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
 
 class ArticuloController extends Controller
 {
@@ -65,6 +65,7 @@ class ArticuloController extends Controller
         $articulos->precio = $request->get('precio');
 
         $articulos->save();
+        // Alert::success('STORE', 'Success Message');
 
         return redirect('/articulos');
     }
@@ -125,9 +126,28 @@ class ArticuloController extends Controller
     // public function destroy(Articulo $articulo)
     public function destroy($id)
     {
-        $articulo = Articulo::find($id);
-        $articulo->delete();
-
+        $delete = Articulo::find($id);
+        $delete->delete();
         return redirect('/articulos');
+
+        // check data deleted or not
+        // if ($delete == 1) {
+        //     $success = true;
+        //     $message = "User deleted successfully";
+        // } else {
+        //     $success = true;
+        //     $message = "User not found";
+        // }
+
+        // return view('articulo.index',
+        // [
+        //     'success' => $success,
+        //     'message' => $message
+        // ]);
+        //  return response
+        // return response()->json([
+        //     'success' => $success,
+        //     'message' => $delete,
+        // ]);
     }
 }

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css">
+    {{-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'> --}}
 @stop
 
 @section('content')
@@ -70,6 +71,7 @@
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
     <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap5.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script> --}}
     {{-- Fin Datatable --}}
     <script>
         $(document).ready(function() {
@@ -82,13 +84,11 @@
                 }
             });
         } );
-    //    Swal.fire(
-    //     'Good job!',
-    //     'You clicked the button!',
-    //     'success'
-    //     )
-    //     $('.select01').select2({
-    //         placeholder: 'Select an option'
-    //     });
+
+        Swal.fire(
+  'Websolutionstuff!',
+  'Button Clicked',
+  'success'
+)
 </script>
 @stop
