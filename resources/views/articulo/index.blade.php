@@ -19,7 +19,7 @@
           position:absolute !important
         }
     </style>
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css"> --}}
     {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-html5-2.2.2/b-print-2.2.2/r-2.2.9/datatables.min.css"/> --}}
@@ -226,65 +226,95 @@
                 // "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
             });
             // $("div.toolbar").html('<b>Custom tool bar! Text/images etc.</b>');
-        } );
 
-        function borrar_registro(e) {
-            e.preventDefault();
-            // alert('No borramo nada');
-            Swal.fire('Any fool can use a computer');
-        //     Swal.fire({
-        //       title: `Are you sure you want to delete this record?`,
-        //       text: "If you delete this, it will be gone forever.",
-        //       icon: "warning",
-        //       buttons: true,
-        //       dangerMode: true,
-        //   })
-        //   .then((willDelete) => {
-        //     if (willDelete) {
-        //       form.submit();
-        //     }
-        //   });
+            // $("#submitBtn").click(function(){
+            //     // alert('holaaaaaaaaaaaaaa');
+            //     $("#myForm").submit(); // Submit the form
+            // });
+
+            // $('#myForm').submit(function(e) {
+            //     // alert('xxxxxxxxxx');
+            //     // e.preventDefault();
+            //     $('#myForm')[0].preventDefault();
+            // });
+
+    //         $("form").submit(function(e) {
+    //             e.preventDefault();
+    //         // alert('borrarArticulo');
+    //   });
+
+
+        });    //document.ready principal
+
+
+        function deletePost(event,id) {
+            // var id  = $(event).data("id");
+            alert(id);
+            let _url = `/articulos/${id}`;
+            let _token   = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: _url,
+                type: 'DELETE',
+                data: {
+                _token: _token
+                },
+                success: function(response) {
+                    alert('borrarndo...');
+                    // $(location).attr('href',"/articulos");
+                // $("#row_"+id).remove();
+                //  setTimeout(function(){location.reload()},2000);
+                }
+            });
+
         }
+        // function deletePost(event,id) {
+        //      alert('vamo a recargar...');
+        //     // $('#dt').DataTable().ajax.reload();
+        //     // var table = $('#dt').DataTable();
+        //     // table.ajax.reload();
+        //     // table.reload();
 
-        $('.xborrar_registro').click(function(event) {
-          var form =  $(this).closest("form");
-          var name = $(this).data("name");
-          e.preventDefault();
-          swal('Any fool can use a computer');
-      });
+        // }
 
-    // Opcion 1 para confirmar eliminacion de registros
-    //     function deleteConfirmation(id) {
+
+
+    //     function deletePost(event,id) {
     //     swal.fire({
-    //         title: "Delete?",
+    //         title: "Desea borrar este registro?",
     //         icon: 'question',
     //         text: "Please ensure and then confirm!",
     //         type: "warning",
     //         showCancelButton: !0,
-    //         confirmButtonText: "Yes, delete it!",
-    //         cancelButtonText: "No, cancel!",
+    //         confirmButtonText: "Borrar",
+    //         cancelButtonText: "Cancelar",
     //         reverseButtons: !0
     //     }).then(function (e) {
 
     //         if (e.value === true) {
-    //             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    //             // var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    //             let _url = `/articulos/${id}`;
+    //             let _token   = $('meta[name="csrf-token"]').attr('content');
 
     //             $.ajax({
     //                 type: 'DELETE',
-    //                 url: "{{url('/articulos')}}/" + id,
-    //                 data: {_token: CSRF_TOKEN},
-    //                 dataType: 'JSON',
-    //                 success: function (results) {
-    //                     if (results.success === true) {
-    //                         swal.fire("Done!", results.message, "success");
-    //                         // refresh page after 2 seconds
-    //                         setTimeout(function(){
-    //                             location.reload();
-    //                         },2000);
-    //                     } else {
-    //                         swal.fire("Error!", results.message, "error");
-    //                     }
-    //                 }
+    //                 // url: "{{url('/articulos')}}/" + id,
+    //                 // data: {_token: CSRF_TOKEN},
+    //                 url: _url,
+    //                 data: _token,
+    //                 dataType: 'JSON'
+    //                 // success: function (results) {
+    //                 //     alert('success');
+    //                 //     if (results.success === true) {
+    //                 //         swal.fire("Done!", results.message, "success");
+    //                 //         // refresh page after 2 seconds
+    //                 //         setTimeout(function(){
+    //                 //             location.reload();
+    //                 //         },2000);
+    //                 //     } else {
+    //                 //         swal.fire("Error!", results.message, "error");
+    //                 //     }
+    //                 // }
     //             });
 
     //         } else {
@@ -296,5 +326,188 @@
     //     })
     // }
 
+        // // var id  = $(event).data("id");
+        // // alert(id);
+        // let _url = `/articulos/${id}`;
+        // let _token   = $('meta[name="csrf-token"]').attr('content');
+
+        // $.ajax({
+        //     url: _url,
+        //     type: 'DELETE',
+        //     data: {
+        //     _token: _token
+        //     },
+        //     success: function(response) {
+        //         alert('borrarndo...');
+        //         $(location).attr('href',"/articulos");
+        //     // $("#row_"+id).remove();
+        //     //  setTimeout(function(){location.reload()},2000);
+        //     }
+        // });
+
+
+
+        // function xxx() {
+        //     alert('xxxx');
+        // }
+        // function borrarRegistro(e) {
+        //     // var form =  $(this).closest("form");
+        //     alert('borrarRegistro');
+        //     // $(this).parents('form').preventDefault();
+        //     // e.preventDefault();
+        //     document.getElementById("formAction").preventDefault();
+        // }
+
+        // $('#formAction').submit(function(e){
+        //     alert('formAction');
+        //     e.preventDefault();
+        // });
+
+        // // Controll data
+        // $('#btnAction').click(function(){
+        //     alert('btnAction');
+        // });
+
+
+        // // $('#formAction').submit(function(e) {
+        // //     alert('formAction');
+        // // });
+
+        // $('#btnAction').onClick(function(e) {
+        //     alert('btnAction');
+        // });
+
+    //     $('.borrarArticulo').submit(function(e) {
+    //         e.preventDefault();
+    //         alert('borrarArticulo');
+    //     //   var form =  $(this).closest("form");
+    //     //   var name = $(this).data("name");
+    //     //   e.preventDefault();
+    //     //   swal('Any fool can use a computer');
+    //   });
+
+    //     function borrarRegistro(e) {
+    //         var form =  $(this).closest("form");
+    //         var name = $(this).data("name");
+    //         e.preventDefault();
+    //         alert(form.name);
+    //         $(this).submit();
+    //         // Swal.fire({
+    //         //     title: 'Desea borrar el registro?',
+    //         //     text: "You won't be able to revert this!",
+    //         //     icon: 'warning',
+    //         //     showCancelButton: true,
+    //         //     confirmButtonColor: '#3085d6',
+    //         //     cancelButtonColor: '#d33',
+    //         //     confirmButtonText: 'Borrar'
+    //         //     }).then((result) => {
+    //         //     if (result.isConfirmed) {
+    //         //         // alert('borrando...');
+    //         //         this.submit();
+    //         //         // Swal.fire(
+    //         //         // 'Deleted!',
+    //         //         // 'Your file has been deleted.',
+    //         //         // 'success'
+    //         //         // )
+    //         //     }
+    //         // })
+    //     }
+
+    //     function xxborrar_registro(e) {
+    //         e.preventDefault();
+    //         // alert('No borramo nada');
+    //         // Swal.fire('Any fool can use a computer');
+    //         Swal.fire({
+    //         //   popup: '',
+    //         showClass: {
+    //             popup: ''
+    //         },
+    //           title: `Are you sure you want to delete this record?`,
+    //           text: "If you delete this, it will be gone forever.",
+    //           icon: "warning",
+    //           buttons: true,
+    //           dangerMode: true,
+    //       })
+    //       .then((willDelete) => {
+    //         if (willDelete) {
+    //           form.submit();
+    //         }
+    //       });
+    //     }
+
+    //     $('.xxxborrar_registro').click(function(event) {
+    //       var form =  $(this).closest("form");
+    //       var name = $(this).data("name");
+    //       e.preventDefault();
+    //       swal('Any fool can use a computer');
+    //   });
+
+    // // Opcion 1 para confirmar eliminacion de registros
+    // //     function deleteConfirmation(id) {
+    // //     swal.fire({
+    // //         title: "Delete?",
+    // //         icon: 'question',
+    // //         text: "Please ensure and then confirm!",
+    // //         type: "warning",
+    // //         showCancelButton: !0,
+    // //         confirmButtonText: "Yes, delete it!",
+    // //         cancelButtonText: "No, cancel!",
+    // //         reverseButtons: !0
+    // //     }).then(function (e) {
+
+    // //         if (e.value === true) {
+    // //             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    // //             $.ajax({
+    // //                 type: 'DELETE',
+    // //                 url: "{{url('/articulos')}}/" + id,
+    // //                 data: {_token: CSRF_TOKEN},
+    // //                 dataType: 'JSON',
+    // //                 success: function (results) {
+    // //                     if (results.success === true) {
+    // //                         swal.fire("Done!", results.message, "success");
+    // //                         // refresh page after 2 seconds
+    // //                         setTimeout(function(){
+    // //                             location.reload();
+    // //                         },2000);
+    // //                     } else {
+    // //                         swal.fire("Error!", results.message, "error");
+    // //                     }
+    // //                 }
+    // //             });
+
+    // //         } else {
+    // //             e.dismiss;
+    // //         }
+
+    // //     }, function (dismiss) {
+    // //         return false;
+    // //     })
+    // // }
+
     </script>
+
+{{-- <script type="text/javascript">
+    $('.show-alert-delete-box').click(function(event){
+        alert('aaaaaaaaxxxxxxxxxxxxxx');
+        // var form =  $(this).closest("form");
+        // var name = $(this).data("name");
+        // event.preventDefault();
+        // swal({
+        //     title: "Are you sure you want to delete this record?",
+        //     text: "If you delete this, it will be gone forever.",
+        //     icon: "warning",
+        //     type: "warning",
+        //     buttons: ["Cancel","Yes!"],
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: 'Yes, delete it!'
+        // }).then((willDelete) => {
+        //     if (willDelete) {
+        //         form.submit();
+        //     }
+        // });
+    });
+</script> --}}
+
 @stop
