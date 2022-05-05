@@ -15,9 +15,15 @@
         table>tbody>tr>td {
             vertical-align: middle !important;
         } */
+
+        /* Agrupo los botones especiales para la datatable */
         .btn-group, .btn-group-vertical {
           position:absolute !important
         }
+        /* .table-striped>tbody>tr:nth-child(odd)>td,
+        .table-striped>tbody>tr:nth-child(odd)>th {
+            background-color: red; /* Choose your own color here */
+        } */
     </style>
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
@@ -29,16 +35,19 @@
 @section('content')
     {{-- <table id="dt" class="table table-dark table-striped mt-4"> --}}
     <a href="articulos/create" class="btn btn-primary mb-3">CREAR</a>
-    <div class="card">
+    {{-- <div class="card"> --}}
+    <div class="container">
         {{-- <div class="card-header">
             <a href="articulos/create" class="btn btn-primary mb-3">CREAR</a>
         </div> --}}
-        <div class="card-body">
+        {{-- <div class="card-body"> --}}
             {{-- <table id="dt" class="table table-striped table-bordered shadow-lg mt-1" style="width:100%"> --}}
             {{-- <table id="dt" class="table table-striped" style="width:100%"> --}}
-                <table id="dt" class="table table-striped">
+                {{-- <table id="dt" class="table"> --}}
                 {{-- <table id="dt" class="table table-dark table-hover"> --}}
-                <thead class="bg-primary text-black">
+                <table id="dt" class="table table-striped" style="width:100%">
+                {{-- <thead class="bg-primary text-black"> --}}
+                <thead>
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Código</th>
@@ -79,7 +88,7 @@
                         </tr>
                     @endforeach --}}
             </table>
-        </div>
+        {{-- </div> --}}
     </div>
 @stop
 
@@ -97,6 +106,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs5/jszip-2.5.0/dt-1.11.5/b-2.2.2/b-colvis-2.2.2/b-html5-2.2.2/b-print-2.2.2/date-1.1.2/fc-4.0.2/fh-3.2.2/r-2.2.9/sc-2.0.5/sb-1.3.2/sl-1.3.4/datatables.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // Este function capaz q ni hace falta #chacho
         $(function() {
@@ -163,42 +173,15 @@
                 // type: POST,
                 "ajax": "{{ route('dt.articulos') }}",
                 "columns": [
-                //     {data: 'id'},
-                //     {data: 'codigo'},
-                //     {data: 'descripcion'},
-                //     {data: 'cantidad'},
-                //     {data: 'precio'},
-                {
-                    data: 'id',
-                    name: 'id'
-                },
-                {
-                    data: 'codigo',
-                    name: 'codigo'
-                },
-                {
-                    data: 'descripcion',
-                    name: 'descripcion'
-                },
-                {
-                    data: 'cantidad',
-                    name: 'cantidad'
-                },
-                {
-                    data: 'precio',
-                    name: 'precio',
-                    searchable: false,
-                    orderable: false
-                },
-                {
-                    data: 'actions',
-                    name: 'actions',
-                    searchable: false,
-                    orderable: false
-                },
-            ],
-                order: [[2, 'asc']
-            ],
+                    {data: 'id', name: 'id'},
+                    {data: 'codigo', name: 'codigo'},
+                    {data: 'descripcion', name: 'descripcion'},
+                    {data: 'cantidad', name: 'cantidad'},
+                    {data: 'precio', name: 'precio', searchable: false, orderable: false},
+                    {data: 'actions', name: 'actions', searchable: false, orderable: false},
+                ],
+                    order: [[2, 'asc']
+                ],
                 // "fixedHeader": true,
                 "pageLength": 30,
                 // "scrollX": true
@@ -216,60 +199,59 @@
                 // "dom": '<Bf<t>ip>'
                 // "dom": '<"wrapper"flipt>'
 
-                // "language": {
-                //     "lengthMenu": "Mostrar _MENU_ filas por página",
-                //     "zeroRecords": "No se encontro información",
-                //     "info": "Mostrando página _PAGE_ de _PAGES_",
-                //     "infoEmpty": "No hay filas disponibles",
-                //     "infoFiltered": "(filtered from _MAX_ total records)"
-                // },
-                // "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]]
             });
             // $("div.toolbar").html('<b>Custom tool bar! Text/images etc.</b>');
-
-            // $("#submitBtn").click(function(){
-            //     // alert('holaaaaaaaaaaaaaa');
-            //     $("#myForm").submit(); // Submit the form
-            // });
-
-            // $('#myForm').submit(function(e) {
-            //     // alert('xxxxxxxxxx');
-            //     // e.preventDefault();
-            //     $('#myForm')[0].preventDefault();
-            // });
-
-    //         $("form").submit(function(e) {
-    //             e.preventDefault();
-    //         // alert('borrarArticulo');
-    //   });
-
 
         });    //////////// document.ready principal
 
 
-        function deletePost(event,id) {
-            let _url = `/articulos/${id}`;
-            let _token   = $('meta[name="csrf-token"]').attr('content');
-
-            $.ajax({
-                url: _url,
-                type: 'DELETE',
-                data: {
-                _token: _token
-                },
-                success: function(data) {
-                    alert(data.message);
-                    $('#dt').DataTable().ajax.reload(null, false);
-                    // $('#dt').DataTable().ajax.reload(null, false);
-                    // alert(result.message);
-                    // alert(result.success);
-                    // $(location).attr('href',"/articulos");
-                // $("#row_"+id).remove();
-                //  setTimeout(function(){location.reload()},2000);
+        function deleteArticulo(event,id) {
+            Swal.fire({
+                title: 'Desea borrar el articulo?',
+                // text: "Desea borrar el articulo?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Borrar',
+                cancelButtonText: 'Cancelar',
+                width: '25rem',
+                imageWidth: '10px',
+                // buttonsStyling: 'btn btn-outline-primary btn-sm',
+                allowEscapeKey: true
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    let _url = `/articulos/${id}`;
+                    let _token   = $('meta[name="csrf-token"]').attr('content');
+                    $.ajax({
+                        url: _url,
+                        type: 'DELETE',
+                        data: {_token: _token},
+                        success: function(data) {
+                            if (data.success)
+                                {
+                                $('#dt').DataTable().ajax.reload(null, false);
+                                    Swal.fire(
+                                        'Borrado!',
+                                        'Articulo borrado exitosamente.',
+                                        'success'
+                                    )
+                                } else
+                                {
+                                    Swal.fire(
+                                    'Error!',
+                                    'Problema al borrar el artículo...',
+                                    'error'
+                                )
+                                }
+                        }
+                    });
                 }
-            });
-
+                });
         }
+
+
+
         // function deletePost(event,id) {
         //      alert('vamo a recargar...');
         //     // $('#dt').DataTable().ajax.reload();

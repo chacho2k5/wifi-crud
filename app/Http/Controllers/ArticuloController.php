@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
 
 class ArticuloController extends Controller
@@ -126,47 +127,31 @@ class ArticuloController extends Controller
     // public function destroy(Articulo $articulo)
     public function destroy($id)
     {
-        $delete = Articulo::find($id);
-        $delete->delete();
-        // return redirect('/articulos');
-        // return response()->json(['success','Registro borrado exitosamente!']);
+        // $id = 9999;
+        $deleted = DB::table('articulos')->where('id', '=',$id)->delete();
 
-        $success = true;
-        $message = "User deleted successfully";
+        // check data deleted or not
+        if ($deleted >= 1) {
+            $success = true;
+            $message = "Artículo borrado con exito!";
+        } else {
+            $success = false;
+            $message = "No se pudo borrar el artículo...";
+        }
 
         return response()->json([
             'success' => $success,
             'message' => $message
         ]);
 
-
+        // $delete = Articulo::find($id);
+        // $delete->delete();
+        // return redirect('/articulos');
+        // return response()->json(['success','Registro borrado exitosamente!']);
 
         // return response()->json(['success',$delete]);
         // return redirect('/articulos')->with('status', 'Registro borrado!');
 
         // return view('articulo.index');
-
-        // $success = true;
-        // $message = "User deleted successfully";
-
-        // check data deleted or not
-        // if ($delete == 1) {
-        //     $success = true;
-        //     $message = "User deleted successfully";
-        // } else {
-        //     $success = true;
-        //     $message = "User not found";
-        // }
-
-        // return view('articulo.index',
-        // [
-        //     'success' => $success,
-        //     'message' => $message
-        // ]);
-        //  return response
-        // return response()->json([
-        //     'success' => $success,
-        //     'message' => $delete,
-        // ]);
     }
 }

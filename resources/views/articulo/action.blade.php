@@ -1,3 +1,7 @@
+<a href="{{ route('articulos.show', $id) }}" class="btn btn-outline-success btn-xs" data-toggle="tooltip" title='Ver'><i class="fas fa-eye"></i></a>
+<a href="{{ route('articulos.edit', $id) }}" class="btn btn-outline-primary btn-xs" data-toggle="tooltip" title='Editar'><i class="fas fa-edit"></i></a>
+<a href="javascript:void(0)" class="btn btn-outline-danger btn-xs" onclick="deleteArticulo(event.target, {{ $id }})" data-toggle="tooltip" title='Borrar'><i class="fa fa-trash"></i></a>
+
 {{-- <form action="{{ route('articulos.destroy', $id) }}" method="POST">
     @csrf --}}
     {{-- @method('DELETE') --}}
@@ -16,7 +20,3 @@
     {{-- <button id="btn{{ $id }}" onclick="borrar({{ $id }})" type="submit" class="btn btn-outline-danger btn-xs" data-toggle="tooltip" title='Borrar'><i class="fa fa-trash"></i></button> --}}
     {{-- <button type="submit" class="btn btn-outline-danger btn-xs" data-toggle="tooltip" title='Borrar'><i class="fa fa-trash"></i></button> --}}
 {{-- </form> --}}
-
-<a href="{{ route('articulos.show', $id) }}" class="btn btn-outline-success btn-xs" data-toggle="tooltip" title='Ver'><i class="fas fa-eye"></i></a>
-<a href="{{ route('articulos.edit', $id) }}" class="btn btn-outline-primary btn-xs" data-toggle="tooltip" title='Editar'><i class="fas fa-edit"></i></a>
-<a href="javascript:void(0)" class="btn btn-outline-danger btn-xs" onclick="deletePost(event.target, {{ $id }})" data-toggle="tooltip" title='Borrar'><i class="fa fa-trash"></i></a>
