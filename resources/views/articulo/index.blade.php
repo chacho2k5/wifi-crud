@@ -244,12 +244,10 @@
     //   });
 
 
-        });    //document.ready principal
+        });    //////////// document.ready principal
 
 
         function deletePost(event,id) {
-            // var id  = $(event).data("id");
-            alert(id);
             let _url = `/articulos/${id}`;
             let _token   = $('meta[name="csrf-token"]').attr('content');
 
@@ -259,8 +257,12 @@
                 data: {
                 _token: _token
                 },
-                success: function(response) {
-                    alert('borrarndo...');
+                success: function(data) {
+                    alert(data.message);
+                    $('#dt').DataTable().ajax.reload(null, false);
+                    // $('#dt').DataTable().ajax.reload(null, false);
+                    // alert(result.message);
+                    // alert(result.success);
                     // $(location).attr('href',"/articulos");
                 // $("#row_"+id).remove();
                 //  setTimeout(function(){location.reload()},2000);
@@ -379,14 +381,14 @@
 
     //     $('.borrarArticulo').submit(function(e) {
     //         e.preventDefault();
-    //         alert('borrarArticulo');
-    //     //   var form =  $(this).closest("form");
-    //     //   var name = $(this).data("name");
-    //     //   e.preventDefault();
-    //     //   swal('Any fool can use a computer');
-    //   });
-
-    //     function borrarRegistro(e) {
+    //         //     cancelButtonColor: '#d33',
+    //         //     confirmButtonText: 'Borrar'
+    //         //     }).then((result) => {
+    //         //     if (result.isConfirmed) {
+    //         //         // alert('borrando...');
+    //         //         this.submit();
+    //         //         // Swal.fire(
+    //         //         // 'Deleted!',
     //         var form =  $(this).closest("form");
     //         var name = $(this).data("name");
     //         e.preventDefault();
@@ -432,15 +434,7 @@
     //         if (willDelete) {
     //           form.submit();
     //         }
-    //       });
-    //     }
-
-    //     $('.xxxborrar_registro').click(function(event) {
-    //       var form =  $(this).closest("form");
-    //       var name = $(this).data("name");
-    //       e.preventDefault();
-    //       swal('Any fool can use a computer');
-    //   });
+    //       });                    results.message
 
     // // Opcion 1 para confirmar eliminacion de registros
     // //     function deleteConfirmation(id) {
@@ -450,7 +444,7 @@
     // //         text: "Please ensure and then confirm!",
     // //         type: "warning",
     // //         showCancelButton: !0,
-    // //         confirmButtonText: "Yes, delete it!",
+    // //         confirmButtonText: "Yes, delete it!",                    results.message
     // //         cancelButtonText: "No, cancel!",
     // //         reverseButtons: !0
     // //     }).then(function (e) {

@@ -129,7 +129,20 @@ class ArticuloController extends Controller
         $delete = Articulo::find($id);
         $delete->delete();
         // return redirect('/articulos');
-        return response()->json(['success','Registro borrado exitosamente!']);
+        // return response()->json(['success','Registro borrado exitosamente!']);
+
+        $success = true;
+        $message = "User deleted successfully";
+
+        return response()->json([
+            'success' => $success,
+            'message' => $message
+        ]);
+
+
+
+        // return response()->json(['success',$delete]);
+        // return redirect('/articulos')->with('status', 'Registro borrado!');
 
         // return view('articulo.index');
 
