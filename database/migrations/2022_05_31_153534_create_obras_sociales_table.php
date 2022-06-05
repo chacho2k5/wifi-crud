@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('niveles', function (Blueprint $table) {
+        Schema::create('obras_sociales', function (Blueprint $table) {
             $table->id();
-            $table->string('descripcion',50);
-            // $table->string('turno',50)->nullable();
-            // $table->unsignedTinyInteger('alumnos')->nullable();
+            $table->string('descripcion',200);
+            $table->string('siglas',50);
+            $table->timestamps();
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('niveles');
+        Schema::dropIfExists('obras_sociales');
     }
 };

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('documento_tipos', function (Blueprint $table) {
             $table->id();
-            $table->string('tipo',5);           // LC - DNI - CF
-            $table->string('descripcion',60);
+            $table->string('codigo',10);
+            $table->string('descripcion',80);
         });
     }
 

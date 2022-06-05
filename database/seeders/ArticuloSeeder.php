@@ -22,6 +22,6 @@ class ArticuloSeeder extends Seeder
         // $articulo->precio = "1110";
         // $articulo->save();
 
-        Articulo::factory(600)->create();
+        Articulo::factory(10000)->create();
     }
 }

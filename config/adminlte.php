@@ -314,8 +314,9 @@ return [
                     'url'  => '#',
                 ],
                 [
-                    'text'    => 'Docentes',
-                    'url'     => '#',
+                    'text'    => 'Personal',
+                    'icon'    => 'fas fa-user',
+                    'url'     => 'personal',
                 ],
                 [
                     'text' => 'Niveles',

@@ -21,9 +21,7 @@
           position:absolute !important
         }
         /* .table-striped>tbody>tr:nth-child(odd)>td,
-        .table-striped>tbody>tr:nth-child(odd)>th {
-            background-color: red; /* Choose your own color here */
-        } */
+        .table-striped>tbody>tr:nth-child(odd)>th {background-color: red; } */
     </style>
     {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">

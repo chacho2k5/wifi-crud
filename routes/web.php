@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\DatatableController;
 use App\Http\Controllers\NivelController;
+use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReservaController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
@@ -38,9 +39,12 @@ Route::middleware(['auth:sanctum',config('jetstream.auth_session'),'verified'])
 // Route::resource('niveles',NivelController::class);
 
 Route::resource('articulos',ArticuloController::class);
+Route::resource('personal',PersonalController::class);
+Route::resource('reservas',ReservaController::class);
 
+// Esta ruta en realidad podria ser un metodo del ArticuloController
 Route::get('dt/articulos',[DatatableController::class,'articulos'])->name('dt.articulos');
 
-Route::resource('reservas',ReservaController::class);
+
 
 

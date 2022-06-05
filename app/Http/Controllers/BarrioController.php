@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorePersonalRequest;
-use App\Http\Requests\UpdatePersonalRequest;
-use App\Models\Personal;
-use LDAP\Result;
-use PhpParser\Node\Stmt\Return_;
+use App\Models\Barrio;
+use Illuminate\Http\Request;
 
-class PersonalController extends Controller
+class BarrioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +14,7 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        $personal = Personal::all();
-
-        return view('personal.index', compact('personal'));
+        //
     }
 
     /**
@@ -35,10 +30,10 @@ class PersonalController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePersonalRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePersonalRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -46,10 +41,10 @@ class PersonalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Barrio  $barrio
      * @return \Illuminate\Http\Response
      */
-    public function show(Personal $personal)
+    public function show(Barrio $barrio)
     {
         //
     }
@@ -57,10 +52,10 @@ class PersonalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Barrio  $barrio
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personal $personal)
+    public function edit(Barrio $barrio)
     {
         //
     }
@@ -68,11 +63,11 @@ class PersonalController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePersonalRequest  $request
-     * @param  \App\Models\Personal  $personal
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Barrio  $barrio
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePersonalRequest $request, Personal $personal)
+    public function update(Request $request, Barrio $barrio)
     {
         //
     }
@@ -80,10 +75,10 @@ class PersonalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Personal  $personal
+     * @param  \App\Models\Barrio  $barrio
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Personal $personal)
+    public function destroy(Barrio $barrio)
     {
         //
     }
