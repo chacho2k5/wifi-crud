@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('localidades', function (Blueprint $table) {
             $table->id();
             $table->string('nombre',80);
-            $table->string('nombre_completo',100);
+            $table->string('nombre_completo',100)->nullable();
         });
     }
 

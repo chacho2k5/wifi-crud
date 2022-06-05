@@ -17,7 +17,8 @@ class ObraSocialFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'descripcion' => $this->faker->company(),
+            'siglas' => $this->faker->companySuffix()
         ];
     }
 }

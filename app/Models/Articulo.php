@@ -9,7 +9,12 @@ class Articulo extends Model
 {
     use HasFactory;
 
-    // protected $fillable = [];
+    protected $fillable = [
+        'codigo',
+        'descripcion',
+        'cantidad',
+        'precio'
+    ];
 
     // protected $table = 'my_flights';
     // protected $primaryKey = 'flight_id';

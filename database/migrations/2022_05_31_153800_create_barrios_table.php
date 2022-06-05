@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('barrios', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion',80);
-            $table->unsignedTinyInteger('tipo_barrio_id');
         });
     }
 

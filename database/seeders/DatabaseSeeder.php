@@ -3,7 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\Articulo;
+use App\Models\Barrio;
+use App\Models\Calle;
+use App\Models\Localidad;
 use App\Models\Nivel;
+use App\Models\ObraSocial;
 use App\Models\Personal;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +27,11 @@ class DatabaseSeeder extends Seeder
                 UserSeeder::class,
                 DocumentoTipoSeeder::class,
                 ProvinciaSeeder::class,
-                NivelSeeder::class
+                NivelSeeder::class,
+                BarrioSeeder::class,
+                CalleSeeder::class,
+                LocalidadSeeder::class,
+                ObraSocialSeeder::class
             ]);
     }
 }

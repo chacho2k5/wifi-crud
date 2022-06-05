@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Barrio>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Calle>
  */
-class BarrioFactory extends Factory
+class CalleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class BarrioFactory extends Factory
     public function definition()
     {
         return [
-            'descripcion' => $this->faker->city()
+            'descripcion' => $this->faker->streetName()
         ];
     }
 }

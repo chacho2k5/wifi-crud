@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('docente_nivel', function (Blueprint $table) {
             $table->unsignedSmallInteger('docente_id');
             $table->unsignedSmallInteger('nivel_id');
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

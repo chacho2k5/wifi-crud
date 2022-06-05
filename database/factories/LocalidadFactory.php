@@ -17,7 +17,8 @@ class LocalidadFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nombre' => $this->faker->state(),
+            'nombre_completo' => $this->faker->state()
         ];
     }
 }
